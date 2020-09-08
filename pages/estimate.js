@@ -15,7 +15,7 @@ import TextField from '@material-ui/core/TextField';
 import Snackbar from '@material-ui/core/Snackbar';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import estimateAnimation from "../animations/estimateAnimation/data.json";
+import estimateAnimation from "../src/animations/estimateAnimation/data.json";
 
 const useStyles = makeStyles(theme => ({
     icon: {
