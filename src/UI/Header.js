@@ -9,7 +9,6 @@ import Button from '@material-ui/core/Button';
 import Link from '../Link';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import IconButton from '@material-ui/core/IconButton';
@@ -17,6 +16,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Hidden from '@material-ui/core/Hidden';
 
 function ElevationScroll(props) {
     const { children } = props;
@@ -123,7 +123,6 @@ const Header = props => {
     const classes = useStyles();
     const theme = useTheme();
     const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-    const matches = useMediaQuery(theme.breakpoints.down('md'));
 
     const [openDrawer, setOpenDrawer] = useState(false);
 
@@ -184,7 +183,9 @@ const Header = props => {
                     }
                     break;
                 case '/estimate': 
-                    props.setValue(5);
+                    if (props.value !== 5) {
+                        props.setValue(5);
+                    }
                     break;
                 default:
                     break;
@@ -328,7 +329,12 @@ const Header = props => {
                             onClick={() => props.setValue(0)}>
                             <img alt="company logo" className={classes.logo} src="/assets/logo.svg" />
                         </Button>
-                        {matches ? drawer : tabs}
+                        <Hidden mdDown>
+                            {tabs}
+                        </Hidden>
+                        <Hidden lgUp>
+                            {drawer}
+                        </Hidden>
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>
