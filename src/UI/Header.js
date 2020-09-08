@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import Link from '../Link';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -205,7 +205,7 @@ const Header = props => {
                         key={`${route}${index}`}
                         className={classes.tab} 
                         component={Link} 
-                        to={route.link}
+                        href={route.link}
                         label={route.name}
                         arias-owns={route.ariaOwns}
                         aria-haspopup={route.ariaPopup}
@@ -218,7 +218,7 @@ const Header = props => {
                 color="secondary" 
                 className={classes.button}
                 component={Link}
-                to="/estimate"
+                href="/estimate"
                 onClick={() => props.setValue(5)}
             >
                 Free Estimate
@@ -238,7 +238,7 @@ const Header = props => {
                     <MenuItem 
                         key={`${option}${index}`}
                         component={Link} 
-                        to={option.link}
+                        href={option.link}
                         classes={{root: classes.menuItem}}
                         onClick={(event) => {
                             handleMenuItemClick(event, index);
@@ -272,7 +272,7 @@ const Header = props => {
                                 divider
                                 button
                                 component={Link}
-                                to={route.link}
+                                href={route.link}
                                 selected={props.value === route.activeIndex}
                                 classes={{selected: classes.drawerItemSelected}}
                                 onClick={() => {
@@ -297,7 +297,7 @@ const Header = props => {
                             button 
                             component={Link} 
                             classes={{root: classes.drawerItemEstimate, selected: classes.drawerItemSelected}}
-                            to="/estimate"
+                            href="/estimate"
                             selected={props.value === 5}
                         >
                             <ListItemText 
@@ -322,7 +322,7 @@ const Header = props => {
                     <Toolbar disableGutters>
                         <Button 
                             component={Link} 
-                            to="/" 
+                            href="/" 
                             disableRipple
                             className={classes.logoContainer} 
                             onClick={() => props.setValue(0)}>

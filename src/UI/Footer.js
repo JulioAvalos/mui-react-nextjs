@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from '../Link';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -65,7 +65,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/" 
+                                href="/" 
                                 className={classes.link}
                                 onClick={() => props.setValue(0)} 
                             >
@@ -78,7 +78,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/services" 
+                                href="/services" 
                                 className={classes.link}
                                 onClick={() => { 
                                     props.setValue(1);
@@ -90,7 +90,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/customsoftware" 
+                                href="/customsoftware" 
                                 className={classes.link}
                                 onClick={() => { 
                                     props.setValue(1);
@@ -102,7 +102,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/mobileapps" 
+                                href="/mobileapps" 
                                 className={classes.link}
                                 onClick={() => { 
                                     props.setValue(1);
@@ -114,7 +114,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/websites" 
+                                href="/websites" 
                                 className={classes.link}
                                 onClick={() => { 
                                     props.setValue(1);
@@ -130,7 +130,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/revolution" 
+                                href="/revolution" 
                                 className={classes.link}
                                 onClick={() => props.setValue(2)} 
                             >
@@ -139,7 +139,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/revolution" 
+                                href="/revolution" 
                                 className={classes.link}
                                 onClick={() => props.setValue(2)} 
                             >
@@ -148,7 +148,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/revolution" 
+                                href="/revolution" 
                                 className={classes.link}
                                 onClick={() => props.setValue(2)} 
                             >
@@ -157,7 +157,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/revolution" 
+                                href="/revolution" 
                                 className={classes.link}
                                 onClick={() => props.setValue(2)} 
                             >
@@ -170,7 +170,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/about" 
+                                href="/about" 
                                 className={classes.link}
                                 onClick={() => props.setValue(3)} 
                             >
@@ -179,7 +179,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/about" 
+                                href="/about" 
                                 className={classes.link}
                                 onClick={() => props.setValue(3)} 
                             >
@@ -188,7 +188,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/about" 
+                                href="/about" 
                                 className={classes.link}
                                 onClick={() => props.setValue(3)} 
                             >
@@ -201,7 +201,7 @@ const Footer = props => {
                             <Grid 
                                 item 
                                 component={Link} 
-                                to="/contact" 
+                                href="/contact" 
                                 className={classes.link}
                                 onClick={() => props.setValue(4)} 
                             >
@@ -213,7 +213,7 @@ const Footer = props => {
             </Hidden>
             <img 
                 alt="black decorative slash" 
-                src="/assets/footerAdorment.svg"
+                src="/assets/footerAdornment.svg"
                 className={classes.adornment}
             />
             <Grid 

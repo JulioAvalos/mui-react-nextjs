@@ -4,7 +4,7 @@ const arcBlue = "#0B72B9";
 const arcOrange = "#FFBA60";
 const arcGrey = "#868686";
 
-const theme = createMuiTheme({
+export default createMuiTheme({
   palette: {
     common: {
         blue: `${arcBlue}`,
@@ -108,5 +108,3 @@ const theme = createMuiTheme({
     }
   }
 });
-
-export default theme;
