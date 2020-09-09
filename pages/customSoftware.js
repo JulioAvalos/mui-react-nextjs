@@ -88,6 +88,11 @@ const CustomSoftware = props => {
                 <title key="title">
                     Custom Software Development and Design - Free Estimate
                 </title>
+                <meta 
+                    name="description" 
+                    key="description" 
+                    content="Cutting-edge custom software development with gorgeous designs from scratch - let us optimize your business, solving problems instead of creating new ones." 
+                />
             </Head>
             <Grid 
                 item 

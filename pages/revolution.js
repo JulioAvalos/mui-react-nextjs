@@ -43,6 +43,11 @@ const Revolution = props => {
                 <title key="title">
                     The Revolution - Cutting-Edge Software | Arc Development
                 </title>
+                <meta 
+                    name="description" 
+                    key="description" 
+                    content="Visionary insights, coupled with cutting-edge technology, is a recipe for revolution. Get a free online estimate instantly!" 
+                />
             </Head>
             <Grid item className={classes.rowContainer} style={{marginTop: '2em'}}>
                 <Typography 
