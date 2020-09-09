@@ -63,7 +63,7 @@ const Service = props => {
             </Head>
             <Grid item style={{ marginLeft: matchesSM ? 0 : '5em', marginTop: matchesSM ? '1em' : '2em'}}>
                 <Typography 
-                    variant="h2"
+                    variant="h1"
                     align={ matchesSM ? 'center' : undefined }
                     gutterBottom 
                 >

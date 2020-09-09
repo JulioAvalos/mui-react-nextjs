@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from '.../src/Link';
+import Link from '../src/Link';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
@@ -82,7 +82,7 @@ const Websites = props => {
                 </Hidden>
                 <Grid item container direction="column" className={classes.heading}>
                     <Grid item>
-                        <Typography align={matchesMD ? 'center' : undefined} variant="h2">
+                        <Typography align={matchesMD ? 'center' : undefined} variant="h1">
                             Website Development
                         </Typography>
                     </Grid>

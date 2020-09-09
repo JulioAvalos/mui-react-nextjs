@@ -752,7 +752,7 @@ const Estimate = props => {
             </Head>
             <Grid item container direction="column" lg alignItems={matchesMD ? "center" : undefined}>
                 <Grid item style={{ marginTop: '2em', marginLeft: matchesMD ? 0 : '5em' }}>
-                    <Typography variant="h2" align={matchesMD ? "center" : undefined}>Estimate</Typography>
+                    <Typography variant="h1" align={matchesMD ? "center" : undefined}>Estimate</Typography>
                 </Grid>
                 <Grid 
                     item 
@@ -777,7 +777,7 @@ const Estimate = props => {
                     <React.Fragment key={index}>
                         <Grid item>
                             <Typography
-                                variant="h2"
+                                variant="h1"
                                 align="center"
                                 style={{
                                     fontWeight: 500,
@@ -884,7 +884,7 @@ const Estimate = props => {
             >
                 <Grid container justify="center">
                     <Grid item style={{marginTop: '1em', marginBottom: '1em'}}>
-                        <Typography variant="h2" align="center">
+                        <Typography variant="h1" align="center">
                             Estimate
                         </Typography>
                     </Grid>

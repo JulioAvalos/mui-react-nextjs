@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import technologyAnimation from "../animations/technologyAnimation/data.json";
+import technologyAnimation from "../src/animations/technologyAnimation/data.json";
 
 import CallToAction from "../src/UI/CallToAction";
 
@@ -56,7 +56,7 @@ const Revolution = props => {
             <Grid item className={classes.rowContainer} style={{marginTop: '2em'}}>
                 <Typography 
                     align={matchesMD ? 'center' : undefined}
-                    variant="h2" 
+                    variant="h1" 
                     style={{fontFamily: 'Pacifico'}}
                 >
                     The Revolution

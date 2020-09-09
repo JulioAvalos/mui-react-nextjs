@@ -155,7 +155,7 @@ const LandingPage = (props) => {
             <Grid item>{/*-----Hero Block-----*/}
                 <Grid container justify="flex-end" alignItems="center" direction="row">
                     <Grid sm item className={classes.heroContainer}>
-                        <Typography variant="h2" align="center">
+                        <Typography variant="h1" align="center">
                             Bringing West Coast Technology
                             <br />
                             to the Midwest
@@ -386,7 +386,7 @@ const LandingPage = (props) => {
                                 sm
                                 style={{ marginLeft: matchesXS ? 0 : matchesSM ? '2em' : '5em' }}>
                                 <Grid container style={{marginBottom: matchesXS ? "10em" : 0}} direction="column">
-                                    <Typography variant="h2" style={{ color: 'white' }}>About Us</Typography>
+                                    <Typography variant="h1" style={{ color: 'white' }}>About Us</Typography>
                                     <Typography variant="subtitle2">Let's get personal.</Typography>
                                     <Grid item>
                                         <Button 
@@ -416,7 +416,7 @@ const LandingPage = (props) => {
                                 }}
                             >
                                 <Grid container direction="column">
-                                    <Typography variant="h2" style={{ color: 'white' }}>Contact Us</Typography>
+                                    <Typography variant="h1" style={{ color: 'white' }}>Contact Us</Typography>
                                     <Typography variant="subtitle2">Say Hello! <span role="img" aria-label="waving hand">👋</span></Typography>
                                     <Grid item>
                                         <Button 
