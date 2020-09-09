@@ -221,8 +221,9 @@ const CustomSoftware = props => {
                 container 
                 alignItems={matchesMD ? 'center' : undefined}
                 direction={matchesMD ? 'column' : "row"} 
-                justify="space-between"
+                justify={matchesMD ? "center" : "space-between" }
                 className={classes.rowContainer}
+                style={{display: matchesMD ? "grid" : undefined}}
             >
                 <Grid 
                     item 
@@ -272,7 +273,7 @@ const CustomSoftware = props => {
                     <Grid item md>
                         <Lottie 
                             options={scaleOptions} 
-                            isStopped 
+                            // isStopped 
                             style={{maxHeight: 260, maxWidth: 280}}
                         />
                     </Grid>
@@ -300,7 +301,7 @@ const CustomSoftware = props => {
                 <Grid item container direction="column" alignItems="center">
                     <Grid item>
                         <img 
-                            src="/assets/roots.svg"
+                            src="/assets/root.svg"
                             alt="tree with roots extending out" 
                             height={matchesSM ? '300em' :"450em"}
                             width={matchesSM ? '300em' :"450em"}
@@ -326,9 +327,10 @@ const CustomSoftware = props => {
                 container 
                 direction={matchesMD ? 'column' : "row"} 
                 alignItems={matchesMD ? 'center' : undefined}
-                justify="space-between" 
+                justify={matchesMD ? "center" : "space-between" }
                 style={{marginBottom: '20em'}}
                 className={classes.rowContainer}
+                style={{display: matchesMD ? "grid" : undefined}}
             >
                 <Grid
                     item 

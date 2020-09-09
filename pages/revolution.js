@@ -397,6 +397,7 @@ const Revolution = props => {
                         src="/assets/reviewIcon.svg"
                         alt="magnifying glass" 
                         width="100%"
+                        style={{maxWidth: '40em'}}
                     />
                 </Grid>
             </Grid>
@@ -508,7 +509,8 @@ const Revolution = props => {
                     <img 
                         src="/assets/reviewIcon.svg"
                         alt="magnifying glass" 
-                        width="100%" 
+                        width="100%"
+                        style={{maxWidth: '40em'}}
                     />
                 </Grid>
             </Grid>

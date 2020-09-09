@@ -156,7 +156,7 @@ const MobileApps = props => {
                     <Lottie 
                         options={defaultOptions} 
                         isStopped 
-                        style={{maxWidth: '20em'}}
+                        style={{maxWidth: matchesMD ? '15em' : '20em', height: matchesMD ? "20em" : undefined}}
                     />
                 </Grid>
                 <Grid item container direction="column" md>
@@ -182,7 +182,7 @@ const MobileApps = props => {
                 container 
                 direction={matchesMD ? 'column' : 'row'} 
                 className={classes.rowContainer}
-                style={{marginBottom: '15em'}}
+                style={{marginBottom: '15em', display: matchesMD ? 'grid' : undefined}}
             >
                 <Grid 
                     item 
