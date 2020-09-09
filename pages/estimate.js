@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Head from 'next/head';
 import axios from 'axios';
 import { cloneDeep } from 'lodash';
 import Lottie from 'react-lottie';
@@ -735,6 +736,11 @@ const Estimate = props => {
 
     return (
         <Grid container direction="row">
+            <Head>
+                <title key="title">
+                    Free Custom Software Estimate | Arc Development
+                </title>
+            </Head>
             <Grid item container direction="column" lg alignItems={matchesMD ? "center" : undefined}>
                 <Grid item style={{ marginTop: '2em', marginLeft: matchesMD ? 0 : '5em' }}>
                     <Typography variant="h2" align={matchesMD ? "center" : undefined}>Estimate</Typography>

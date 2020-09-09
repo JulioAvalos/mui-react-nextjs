@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Head from 'next/head';
 import axios from 'axios';
 import Link from '../src/Link';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -178,6 +179,9 @@ const Contact = props => {
 
     return (
         <Grid container direction="row">
+            <Head>
+                <title key="title">Contact Us | Arc Development</title>
+            </Head>
             <Grid
                 item
                 container

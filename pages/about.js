@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -43,6 +44,9 @@ const About = props => {
 
     return (
         <Grid container direction="column">
+            <Head>
+                <title key="title">About Us - History & Team | Arc Development</title>
+            </Head>
             <Grid item className={classes.rowContainer} style={{marginTop: matchesMD ? '1em' : '2em' }}>
                 <Typography variant="h2" align={matchesMD ? 'center' : undefined}>
                     About Us
