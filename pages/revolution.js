@@ -48,6 +48,9 @@ const Revolution = props => {
                     key="description" 
                     content="Visionary insights, coupled with cutting-edge technology, is a recipe for revolution. Get a free online estimate instantly!" 
                 />
+                <meta property="og:title" key="og:title" content="Bringing West Coast Technology to the Midwest | The Revolution" />
+                {/* todo: change url to the real one when its deployed to production! */}
+                <meta property="og:title" key="og:url" content="arc.com/revolution" />
             </Head>
             <Grid item className={classes.rowContainer} style={{marginTop: '2em'}}>
                 <Typography 

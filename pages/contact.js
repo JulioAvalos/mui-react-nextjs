@@ -181,7 +181,14 @@ const Contact = props => {
         <Grid container direction="row">
             <Head>
                 <title key="title">Contact Us | Arc Development</title>
-                <meta name="description" key="description" content="Let us guide you through the custom software design and development process. Send us a message with any of your ideas or questions to get started!" />
+                <meta 
+                    name="description" 
+                    key="description" 
+                    content="Let us guide you through the custom software design and development process. Send us a message with any of your ideas or questions to get started!" 
+                />
+                <meta property="og:title" key="og:title" content="Bringing West Coast Technology to the Midwest | Contact Us" />
+                {/* todo: change url to the real one when its deployed to production! */}
+                <meta property="og:title" key="og:url" content="arc.com/contact" />
             </Head>
             <Grid
                 item

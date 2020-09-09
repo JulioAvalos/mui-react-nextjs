@@ -48,6 +48,9 @@ const Websites = props => {
                     key="description" 
                     content="Completely custom designed and built from scratch to be blazing fast. Optimized code, server-side rendering, and perfect responsive design | 99% PageSpeed Score"
                 />
+                <meta property="og:title" key="og:title" content="Bringing West Coast Technology to the Midwest | Websites" />
+                {/* todo: change url to the real one when its deployed to production! */}
+                <meta property="og:title" key="og:url" content="arc.com/websites" />
             </Head>
              <Grid 
                 item 

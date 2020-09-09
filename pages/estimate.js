@@ -745,6 +745,9 @@ const Estimate = props => {
                     key="description" 
                     content="Use our free online estimate calculator to instantly check the cost of your custom software, mobile app, or website design and development project!" 
                 />
+                <meta property="og:title" key="og:title" content="Bringing West Coast Technology to the Midwest | Free Estimate" />
+                {/* todo: change url to the real one when its deployed to production! */}
+                <meta property="og:title" key="og:url" content="arc.com/estimate" />
             </Head>
             <Grid item container direction="column" lg alignItems={matchesMD ? "center" : undefined}>
                 <Grid item style={{ marginTop: '2em', marginLeft: matchesMD ? 0 : '5em' }}>
