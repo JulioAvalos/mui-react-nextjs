@@ -51,6 +51,7 @@ const Revolution = props => {
                 <meta property="og:title" key="og:title" content="Bringing West Coast Technology to the Midwest | The Revolution" />
                 {/* todo: change url to the real one when its deployed to production! */}
                 <meta property="og:title" key="og:url" content="arc.com/revolution" />
+                <link rel="canonical" key="canonical" href="arc.com/revolution"/>
             </Head>
             <Grid item className={classes.rowContainer} style={{marginTop: '2em'}}>
                 <Typography 

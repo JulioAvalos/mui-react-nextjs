@@ -189,6 +189,7 @@ const Contact = props => {
                 <meta property="og:title" key="og:title" content="Bringing West Coast Technology to the Midwest | Contact Us" />
                 {/* todo: change url to the real one when its deployed to production! */}
                 <meta property="og:title" key="og:url" content="arc.com/contact" />
+                <link rel="canonical" key="canonical" href="https://arc.com/contact"/>
             </Head>
             <Grid
                 item

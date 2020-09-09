@@ -150,6 +150,7 @@ const LandingPage = (props) => {
                 <meta property="og:title" key="og:title" content="Bringing West Coast Technology to the Midwest | Arc Development" />
                 {/* todo: change url to the real one when its deployed to production! */}
                 <meta property="og:title" key="og:url" content="arc.com" />
+                <link rel="canonical" key="canonical" href="arc.com"/>
             </Head>
             <Grid item>{/*-----Hero Block-----*/}
                 <Grid container justify="flex-end" alignItems="center" direction="row">

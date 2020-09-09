@@ -60,6 +60,7 @@ const MobileApps = props => {
                 <meta property="og:title" key="og:title" content="Bringing West Coast Technology to the Midwest | iOS/Android App Development" />
                 {/* todo: change url to the real one when its deployed to production! */}
                 <meta property="og:title" key="og:url" content="arc.com/mobileapps" />
+                <link rel="canonical" key="canonical" href="arc.com/mobileapps"/>
             </Head>
             <Grid 
                 item 

@@ -96,6 +96,7 @@ const CustomSoftware = props => {
                 <meta property="og:title" key="og:title" content="Bringing West Coast Technology to the Midwest | Custom Software Development" />
                 {/* todo: change url to the real one when its deployed to production! */}
                 <meta property="og:title" key="og:url" content="arc.com/customsoftware" />
+                <link rel="canonical" key="canonical" href="arc.com/customsoftware"/>
             </Head>
             <Grid 
                 item 

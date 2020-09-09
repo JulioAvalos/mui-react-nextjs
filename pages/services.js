@@ -59,6 +59,7 @@ const Service = props => {
                 <meta property="og:title" key="og:title" content="Bringing West Coast Technology to the Midwest | Services" />
                 {/* todo: change url to the real one when its deployed to production! */}
                 <meta property="og:title" key="og:url" content="arc.com/services" />
+                <link rel="canonical" key="canonical" href="arc.com/services"/>
             </Head>
             <Grid item style={{ marginLeft: matchesSM ? 0 : '5em', marginTop: matchesSM ? '1em' : '2em'}}>
                 <Typography 

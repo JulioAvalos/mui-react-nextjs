@@ -54,6 +54,7 @@ const About = props => {
                 <meta property="og:title" key="og:title" content="Bringing West Coast Technology to the Midwest | About Us" />
                 {/* todo: change url to the real one when its deployed to production! */}
                 <meta property="og:title" key="og:url" content="arc.com/about" />
+                <link rel="canonical" key="canonical" href="arc.com/about"/>
             </Head>
             <Grid item className={classes.rowContainer} style={{marginTop: matchesMD ? '1em' : '2em' }}>
                 <Typography variant="h2" align={matchesMD ? 'center' : undefined}>

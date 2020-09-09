@@ -748,6 +748,7 @@ const Estimate = props => {
                 <meta property="og:title" key="og:title" content="Bringing West Coast Technology to the Midwest | Free Estimate" />
                 {/* todo: change url to the real one when its deployed to production! */}
                 <meta property="og:title" key="og:url" content="arc.com/estimate" />
+                <link rel="canonical" key="canonical" href="arc.com/estimate"/>
             </Head>
             <Grid item container direction="column" lg alignItems={matchesMD ? "center" : undefined}>
                 <Grid item style={{ marginTop: '2em', marginLeft: matchesMD ? 0 : '5em' }}>
