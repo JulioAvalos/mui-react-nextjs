@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 import axios from 'axios';
 import { cloneDeep } from 'lodash';
@@ -559,6 +560,10 @@ const Estimate = props => {
 
     const sendEstimate = () => {
         setLoading(true);
+        ReactGA.event({
+            category: 'Estimate',
+            action: 'Estimate sent'
+        });
         axios.get(
             'https://us-central1-ng-recipe-book-19d7d.cloudfunctions.net/sendMail',
             { params: {
@@ -866,6 +871,10 @@ const Estimate = props => {
                             getFeatures();
                             getCustomFeatures();
                             getCategory();
+                            ReactGA.event({
+                                category: 'Estimate',
+                                action: 'Estimate Checked'
+                            });
                         }}
                     >
                         Get Estimate

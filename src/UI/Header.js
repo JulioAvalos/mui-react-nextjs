@@ -228,7 +228,13 @@ const Header = props => {
                 className={classes.button}
                 component={Link}
                 href="/estimate"
-                onClick={() => props.setValue(5)}
+                onClick={() => {
+                    props.setValue(5);
+                    ReactGA.event({
+                        category: 'Estimate',
+                        action: 'Desktop Header Pressed'
+                    });
+                }}
             >
                 Free Estimate
             </Button>
@@ -301,6 +307,10 @@ const Header = props => {
                             onClick={() => {
                                 setOpenDrawer(false);
                                 props.setValue(5);
+                                ReactGA.event({
+                                    category: 'Estimate',
+                                    action: 'Mobile Header Pressed'
+                                });
                             }} 
                             divider 
                             button 

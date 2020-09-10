@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 import axios from 'axios';
 import Link from '../src/Link';
@@ -134,6 +135,10 @@ const Contact = props => {
     const onConfirm = () => {
         setLoading(true);
         setOpen(true);
+        ReactGA.event({
+            category: 'Message',
+            action: 'Sent Message'
+        });
         axios.get(
             'https://us-central1-ng-recipe-book-19d7d.cloudfunctions.net/sendMail',
             { params: {
@@ -495,7 +500,13 @@ const Contact = props => {
                         href="/estimate"
                         variant="contained"
                         className={classes.estimateButton}
-                        onClick={() => props.setValue(5)}
+                        onClick={() => {
+                            props.setValue(5);
+                            ReactGA.event({
+                                category: 'Estimate',
+                                action: 'Contact page Pressed'
+                            });
+                        }}
                     >
                         Free Estimate
                     </Button>
