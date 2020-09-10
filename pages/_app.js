@@ -7,7 +7,7 @@ import Header from '../src/UI/Header';
 import Footer from '../src/UI/Footer';
 import Theme from "../src/UI/Theme";
 
-ReactGA.initialize("YOUR-ID");
+ReactGA.initialize("UA-177632291-1");
 
 export default function MyApp(props) {
   
