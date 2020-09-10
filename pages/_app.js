@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import ReactGA from 'react-ga';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Header from '../src/UI/Header';
 import Footer from '../src/UI/Footer';
 import Theme from "../src/UI/Theme";
+
+ReactGA.initialize("YOUR-ID");
 
 export default function MyApp(props) {
   
