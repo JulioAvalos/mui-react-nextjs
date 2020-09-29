@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import ReactGA from 'react-ga';
 import Head from 'next/head';
 import axios from 'axios';
@@ -313,6 +313,8 @@ const Estimate = props => {
     const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
     const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
 
+    const myRef = useRef(null);
+
     const [questions, setQuestions] = useState(defaultQuestions);
     const [dialogOpen, setDialogOpen] = useState(false);
 
@@ -352,6 +354,11 @@ const Estimate = props => {
     };
 
     const nextQuestion = () => {
+        if(matchesSM){
+            //actual position where our ref is located in our DOM.
+            window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
+
         const newQuestions = cloneDeep(questions)
         const currentlyActive = newQuestions.filter(question => question.active);
         const activeIndex = currentlyActive[0].id - 1;
@@ -364,6 +371,11 @@ const Estimate = props => {
     };
 
     const previousQuestion = () => {
+        if(matchesSM){
+            //actual position where our ref is located in our DOM.
+            window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
+
         const newQuestions = cloneDeep(questions)
         const currentlyActive = newQuestions.filter(question => question.active);
         const activeIndex = currentlyActive[0].id - 1;
@@ -420,6 +432,10 @@ const Estimate = props => {
 
         switch (newSelected.title) {
             case 'Custom Software Development':
+                if(matchesSM){
+                    //actual position where our ref is located in our DOM.
+                    window.scrollTo(0, myRef.current.offsetTop + 75);
+                }
                 setQuestions(softwareQuestions);
                 setService(newSelected.title);
                 setPlatforms([]);
@@ -429,6 +445,10 @@ const Estimate = props => {
                 setUsers("");
                 break;
             case 'iOS/Android App Development':
+                if(matchesSM){
+                    //actual position where our ref is located in our DOM.
+                    window.scrollTo(0, myRef.current.offsetTop + 75);
+                }
                 setQuestions(softwareQuestions);
                 setService(newSelected.title);
                 setPlatforms([]);
@@ -438,6 +458,10 @@ const Estimate = props => {
                 setUsers("");
                 break;
             case 'Website Development':
+                if(matchesSM){
+                    //actual position where our ref is located in our DOM.
+                    window.scrollTo(0, myRef.current.offsetTop + 75);
+                }
                 setQuestions(websiteQuestions);
                 setService(newSelected.title);
                 setPlatforms([]);
@@ -791,7 +815,7 @@ const Estimate = props => {
             >
                 {questions.filter(question => question.active).map((question, index) => (
                     <React.Fragment key={index}>
-                        <Grid item>
+                        <Grid item ref={myRef}>
                             <Typography
                                 variant="h1"
                                 align="center"
