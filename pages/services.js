@@ -27,6 +27,9 @@ const useStyle = makeStyles(theme => ({
         marginTop: '10em',
         [theme.breakpoints.down('sm')]: {
             padding: 25
+        },
+        [theme.breakpoints.down('xs')]: {
+            padding: 5
         }
     },
     learnButton: {
@@ -44,6 +47,7 @@ const Service = props => {
     const classes = useStyle();
     const theme = useTheme();
     const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+    const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
 
     return (
         <Grid container direction="column">{/*-----Services Block (iOS/Android)-----*/}
@@ -85,7 +89,7 @@ const Service = props => {
                     }}
                 >
                     <Typography variant="h4">
-                        iOS/Android Development
+                        iOS/Android App Development
                     </Typography>
                     <Typography variant="subtitle1" className={classes.subtitle}>
                         Extend Functionality. Extend Access. Increase Engagemenet.
@@ -180,7 +184,7 @@ const Service = props => {
                         Reach More. Discover More. Sell More.
                     </Typography>
                     <Typography variant="subtitle1">
-                        Optimized for Search Engines, built for speed.
+                    Optimized for Search Engines, {matchesXS && <br/> }built for speed.
                     </Typography>
                     <Button
                         component={Link} 

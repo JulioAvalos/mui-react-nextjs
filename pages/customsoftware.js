@@ -124,7 +124,17 @@ const CustomSoftware = props => {
                 </Hidden>
                 <Grid item container direction="column" className={classes.heading}>
                     <Grid item>
-                        <Typography align={matchesMD ? 'center' : undefined} variant="h1">Custom Software Development</Typography>
+                        <Typography 
+                            align={matchesMD ? 'center' : undefined} 
+                            variant="h1"
+                            style={{
+                                lineHeight: matchesXS ? 1.1 : null, 
+                                marginBottom: matchesXS ? '0.5em': null,
+                                fontSize: '2.25em'
+                            }}
+                        >
+                            Custom Software Development
+                        </Typography>
                     </Grid>
                     <Grid item>
                         <Typography align={matchesMD ? 'center' : undefined} variant="body1" paragraph>
@@ -270,7 +280,11 @@ const CustomSoftware = props => {
                     direction={matchesSM ? 'column': 'row'}
                     md 
                 >
-                    <Grid item md>
+                    <Grid 
+                        item 
+                        md 
+                        style={{marginBottom: matchesSM ? '2em' : null}}
+                    >
                         <Lottie 
                             options={scaleOptions} 
                             // isStopped 
@@ -341,7 +355,9 @@ const CustomSoftware = props => {
                 >
                     <Grid item container direction="column" md>
                         <Grid item>
-                            <Typography variant="h4" align={matchesSM ? 'center' : undefined}>Automation</Typography>
+                            <Typography variant="h4" align={matchesSM ? 'center' : undefined}>
+                                Automation
+                            </Typography>
                         </Grid>
                         <Grid item>
                             <Typography variant="body1" paragraph align={matchesSM ? 'center' : undefined}>
@@ -357,7 +373,8 @@ const CustomSoftware = props => {
                             </Typography>
                         </Grid>
                     </Grid>
-                    <Grid item md>
+                    <Grid item md 
+                        style={{marginTop: matchesSM ? '2em' : null}}>
                         <Lottie 
                             options={automationOptions} 
                             isStopped 
@@ -372,7 +389,7 @@ const CustomSoftware = props => {
                     direction={matchesSM ? 'column': 'row'}
                     md
                 >
-                    <Grid item md>
+                    <Grid item md style={{marginBottom: matchesSM ? '2em' : null}}>
                         <Lottie 
                             options={uxOptions} 
                             isStopped 

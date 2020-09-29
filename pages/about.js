@@ -23,6 +23,10 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('sm')]: {
             paddingLeft: '1.5em',
             paddingRight: '1.5em',
+        },
+        [theme.breakpoints.down('xs')]: {
+            paddingLeft: '1em',
+            paddingRight: '1em',
         }
     },
     avatar: {
@@ -101,6 +105,7 @@ const About = props => {
                         <Grid item>
                             <Typography 
                                 variant="body1" 
+                                align={matchesMD ? "center" : undefined}
                                 paragraph 
                                 style={{fontWeight: 700, fontStyle: 'italic'}}
                             >
