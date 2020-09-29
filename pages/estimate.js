@@ -602,10 +602,18 @@ const Estimate = props => {
     const estimateDisabled = () => {
         let disabled = true;
 
-        const emptySelections = questions.map(
+        const emptySelections = questions
+        .filter(question => question.title !== "Which features do you expect to use?")
+        .map(
             question => question.options.filter(option => option.selected)
         )
         .filter(question => question.length === 0);
+
+        const featuresSelected = questions.filter(question => question.title === "Which features do you expect to use?")
+        .map(question => question.options.filter(option => option.selected))
+        .filter(selection => selection.length > 0);
+            
+        console.log(featuresSelected);
 
         if(questions.length === 2) {
             if(emptySelections.length === 1) {
@@ -613,7 +621,10 @@ const Estimate = props => {
             }
         } else if (questions.length === 1 ) {
             disabled = true;
-        } else if (emptySelections.length < 3 && questions[questions.length -1].options.filter(option => option.selected).length > 0) {
+        } else if (
+            emptySelections.length === 1 &&
+            featuresSelected.length > 0
+        ) {
             disabled = false;
         }
 

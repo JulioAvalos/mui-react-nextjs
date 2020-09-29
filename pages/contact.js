@@ -11,7 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import CirculaProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 
 import ButtonArrow from '../src/UI/ButtonArrow';
@@ -428,7 +428,7 @@ const Contact = props => {
                                 className={classes.sendButton}
                                 onClick={onConfirm}
                             >
-                               {loading ? <CirculaProgress size={30} /> : buttonContents}
+                               {loading ? <CircularProgress size={30} /> : buttonContents}
                             </Button>
                         </Grid>
                     </Grid>
