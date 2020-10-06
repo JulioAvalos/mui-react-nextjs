@@ -18,6 +18,11 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Hidden from '@material-ui/core/Hidden';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import MenuList from '@material-ui/core/MenuList';
 
 function ElevationScroll(props) {
     const { children } = props;
@@ -80,7 +85,8 @@ const useStyles = makeStyles(theme => ({
     menu: {
         backgroundColor: theme.palette.common.blue,
         color: 'white',
-        borderRadius: 0
+        borderRadius: 0,
+        zIndex: 1302
     },
     menuItem: {
         ...theme.typography.tab,
@@ -111,17 +117,17 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.common.orange
     },
     drawerItemSelected: {
-        "& .MuiListItemText-root":{
+        "& .MuiListItemText-root": {
             opacity: 1
         }
     },
     appbar: {
-        zIndex: theme.zIndex.modal + 1 
+        zIndex: theme.zIndex.modal + 1
     }
 }));
 
 const Header = props => {
-    
+
     const classes = useStyles();
     const theme = useTheme();
     const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -130,7 +136,7 @@ const Header = props => {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const [openMenu, setOpenMenu] = useState(false);
-    
+
     const [previousURL, setPreviousURL] = useState("");
 
     const handleChange = (event, newValue) => {
@@ -152,45 +158,51 @@ const Header = props => {
         setAnchorEl(null);
         setOpenMenu(false);
     };
-    
+
+    const handleListKeyDown = (event) => {
+        if (event.key === 'Tab') {
+          event.preventDefault();
+          setOpen(false);
+        }
+      }
+
     const menuOptions = [
-        {name: 'Services', link: '/services', activeIndex: 1, selectedIndex: 0},
-        {name: 'Custom Software Development', link: '/customsoftware' , activeIndex: 1, selectedIndex: 1},
-        {name: 'iOS/Android App Development', link: '/mobileapps', activeIndex: 1, selectedIndex: 2},
-        {name: 'Websites Development', link: '/websites', activeIndex: 1, selectedIndex: 3},
+        { name: 'Custom Software Development', link: '/customsoftware', activeIndex: 1, selectedIndex: 0 },
+        { name: 'iOS/Android App Development', link: '/mobileapps', activeIndex: 1, selectedIndex: 1 },
+        { name: 'Websites Development', link: '/websites', activeIndex: 1, selectedIndex: 2 },
     ];
 
     const routes = [
-        {name: 'Home', link: '/', activeIndex: 0},
+        { name: 'Home', link: '/', activeIndex: 0 },
         {
-            name: 'Services', 
-            link: '/services', 
-            activeIndex: 1, 
-            ariaOwns: anchorEl ? 'simple-menu' : undefined, 
-            ariaPopup: anchorEl ? true : undefined, 
+            name: 'Services',
+            link: '/services',
+            activeIndex: 1,
+            ariaOwns: anchorEl ? 'simple-menu' : undefined,
+            ariaPopup: anchorEl ? true : undefined,
             mouseOver: event => handleClick(event)
         },
-        {name: 'The Revolution', link: '/revolution', activeIndex: 2},
-        {name: 'About Us', link: '/about', activeIndex: 3},
-        {name: 'Contact Us', link: '/contact', activeIndex: 4}
+        { name: 'The Revolution', link: '/revolution', activeIndex: 2 },
+        { name: 'About Us', link: '/about', activeIndex: 3 },
+        { name: 'Contact Us', link: '/contact', activeIndex: 4 }
     ];
 
     useEffect(() => {
-        if(previousURL !== window.location.pathname) {
+        if (previousURL !== window.location.pathname) {
             setPreviousURL(window.location.pathname);
             ReactGA.pageview(window.location.pathname + window.location.search);
         }
         [...menuOptions, ...routes].forEach(route => {
-            switch(window.location.pathname) {
+            switch (window.location.pathname) {
                 case `${route.link}`:
-                    if(props.value !== route.activeIndex) {
+                    if (props.value !== route.activeIndex) {
                         props.setValue(route.activeIndex);
-                        if(route.selectedIndex && route.selectedIndex !== props.selectedIndex){
+                        if (route.selectedIndex && route.selectedIndex !== props.selectedIndex) {
                             props.setSelectedIndex(route.selectedIndex);
                         }
                     }
                     break;
-                case '/estimate': 
+                case '/estimate':
                     if (props.value !== 5) {
                         props.setValue(5);
                     }
@@ -203,28 +215,29 @@ const Header = props => {
 
     const tabs = (
         <React.Fragment>
-            <Tabs 
-                value={props.value} 
-                onChange={handleChange} 
+            <Tabs
+                value={props.value}
+                onChange={handleChange}
                 className={classes.tabContainer}
                 indicatorColor="primary"
             >
                 {routes.map((route, index) => (
-                    <Tab 
+                    <Tab
                         key={`${route}${index}`}
-                        className={classes.tab} 
-                        component={Link} 
+                        className={classes.tab}
+                        component={Link}
                         href={route.link}
                         label={route.name}
                         arias-owns={route.ariaOwns}
                         aria-haspopup={route.ariaPopup}
                         onMouseOver={route.mouseOver}
-                        />
-            ))}
+                        onMouseLeave={() => setOpenMenu(false)}
+                    />
+                ))}
             </Tabs>
-            <Button 
-                variant="contained" 
-                color="secondary" 
+            <Button
+                variant="contained"
+                color="secondary"
                 className={classes.button}
                 component={Link}
                 href="/estimate"
@@ -238,7 +251,56 @@ const Header = props => {
             >
                 Free Estimate
             </Button>
-            <Menu 
+            <Popper
+                open={openMenu}
+                anchorEl={anchorEl}
+                placement="bottom-start"
+                role={undefined}
+                transition
+                disablePortal
+            >
+                {({ TransitionProps, placement }) => (
+                    <Grow
+                        {...TransitionProps}
+                        style={{ transformOrigin: 'top left' }}
+                    >
+                        <Paper
+                            classes={{ root: classes.menu }}
+                            elevation={0}
+                        >
+                            <ClickAwayListener onClickAway={handleClose}>
+                                <MenuList
+                                    onMouseOver={()=> setOpenMenu(true)}
+                                    autoFocusItem={open}
+                                    id="simple-menu"
+                                    onKeyDown={handleListKeyDown}
+                                    disablePadding
+                                    autoFocusItem={false}
+                                    onMouseLeave={handleClose}
+                                >
+                                    {menuOptions.map((option, index) => (
+                                        <MenuItem
+                                            key={`${option}${index}`}
+                                            component={Link}
+                                            href={option.link}
+                                            classes={{ root: classes.menuItem }}
+                                            onClick={(event) => {
+                                                handleMenuItemClick(event, index);
+                                                props.setValue(1);
+                                                handleClose();
+                                            }}
+                                            selected={index === props.selectedIndex && props.value === 1 && window.location.pathname !== '/services' }
+                                        >
+                                            {option.name}
+                                        </MenuItem>
+                                    ))}
+                                </MenuList>
+                            </ClickAwayListener>
+                        </Paper>
+                    </Grow>
+                )}
+            </Popper>
+            {/* <Menu 
                 id="simple-menu" 
                 anchorEl={anchorEl} 
                 open={openMenu} 
@@ -246,87 +308,71 @@ const Header = props => {
                 classes={{paper: classes.menu}}
                 MenuListProps={{onMouseLeave: handleClose}}
                 elevation={0}
-                style={{zIndex: 1302}}
                 keepMounted
             >
-                {menuOptions.map((option, index) => (
-                    <MenuItem 
-                        key={`${option}${index}`}
-                        component={Link} 
-                        href={option.link}
-                        classes={{root: classes.menuItem}}
-                        onClick={(event) => {
-                            handleMenuItemClick(event, index);
-                            props.setValue(1);
-                            handleClose();
-                        }}
-                        selected={index === props.selectedIndex && props.value === 1}
-                    >
-                        {option.name}
-                    </MenuItem>
-                ))}
-            </Menu>
+          
+            </Menu> */}
         </React.Fragment>
     );
 
     const drawer = (
         <React.Fragment>
-            <SwipeableDrawer 
-                disableBackdropTransition={!iOS} 
-                disableDiscovery={iOS} 
-                open={openDrawer} 
+            <SwipeableDrawer
+                disableBackdropTransition={!iOS}
+                disableDiscovery={iOS}
+                open={openDrawer}
                 onOpen={() => setOpenDrawer(true)}
                 onClose={() => setOpenDrawer(false)}
-                classes={{paper: classes.drawer}}
+                classes={{ paper: classes.drawer }}
             >
                 <div className={classes.toolbarMargin} />
-                    <List disablePadding>
-                        {routes.map(route => (
-                            <ListItem
-                                key={`${route}${route.activeIndex}`}
-                                divider
-                                button
-                                component={Link}
-                                href={route.link}
-                                selected={props.value === route.activeIndex}
-                                classes={{selected: classes.drawerItemSelected}}
-                                onClick={() => {
-                                    setOpenDrawer(false);
-                                    props.setValue(route.activeIndex);
-                                }}
-                            >
-                                <ListItemText 
-                                    className={classes.drawerItem} 
-                                    disableTypography
-                                >
-                                    {route.name}
-                                </ListItemText>
-                            </ListItem>
-                        ))}
-                        <ListItem 
+                <List disablePadding>
+                    {routes.map(route => (
+                        <ListItem
+                            key={`${route}${route.activeIndex}`}
+                            divider
+                            button
+                            component={Link}
+                            href={route.link}
+                            selected={props.value === route.activeIndex}
+                            classes={{ selected: classes.drawerItemSelected }}
                             onClick={() => {
                                 setOpenDrawer(false);
-                                props.setValue(5);
-                                ReactGA.event({
-                                    category: 'Estimate',
-                                    action: 'Mobile Header Pressed'
-                                });
-                            }} 
-                            divider 
-                            button 
-                            component={Link} 
-                            classes={{root: classes.drawerItemEstimate, selected: classes.drawerItemSelected}}
-                            href="/estimate"
-                            selected={props.value === 5}
+                                props.setValue(route.activeIndex);
+                            }}
                         >
-                            <ListItemText 
-                                className={classes.drawerItem} 
+                            <ListItemText
+                                className={classes.drawerItem}
                                 disableTypography
                             >
-                                Free Estimate
+                                {route.name}
                             </ListItemText>
                         </ListItem>
-                    </List>
+                    ))}
+                    <ListItem
+                        onClick={() => {
+                            setOpenDrawer(false);
+                            props.setValue(5);
+                            ReactGA.event({
+                                category: 'Estimate',
+                                action: 'Mobile Header Pressed'
+                            });
+                        }}
+                        divider
+                        button
+                        component={Link}
+                        classes={{ root: classes.drawerItemEstimate, selected: classes.drawerItemSelected }}
+                        href="/estimate"
+                        selected={props.value === 5}
+                    >
+                        <ListItemText
+                            className={classes.drawerItem}
+                            disableTypography
+                        >
+                            Free Estimate
+                            </ListItemText>
+                    </ListItem>
+                </List>
             </SwipeableDrawer>
             <IconButton className={classes.drawerIconContainer} onClick={() => setOpenDrawer(!openDrawer)} disableRipple>
                 <MenuIcon className={classes.drawerIcon} />
@@ -337,19 +383,19 @@ const Header = props => {
     return (
         <React.Fragment>
             <ElevationScroll>
-                <AppBar position="fixed"  className={classes.appbar} color="primary">
+                <AppBar position="fixed" className={classes.appbar} color="primary">
                     <Toolbar disableGutters>
-                        <Button 
-                            component={Link} 
-                            href="/" 
+                        <Button
+                            component={Link}
+                            href="/"
                             disableRipple
                             onClick={() => props.setValue(0)}
-                            className={classes.logoContainer} 
-                            style={{textDecoration: 'none'}}
+                            className={classes.logoContainer}
+                            style={{ textDecoration: 'none' }}
                         >
                             <svg className={classes.logo} id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 139">
                                 <style>
-                                {`
+                                    {`
                                     .st0{
                                         fill:none
                                     }
@@ -367,21 +413,21 @@ const Header = props => {
                                     }
                                 `}
                                 </style>
-                                <path d="M448.07-1l-9.62 17.24-8.36 14.96L369.93 139H-1V-1z"/>
-                                <path className="st0" d="M-1 139h479.92v.01H-1z"/>
+                                <path d="M448.07-1l-9.62 17.24-8.36 14.96L369.93 139H-1V-1z" />
+                                <path className="st0" d="M-1 139h479.92v.01H-1z" />
                                 <text transform="translate(261.994 65.233)" className="st1 st2" fontSize="57">Arc</text>
                                 <text transform="translate(17.692 112.015)" className="st1 st2" fontSize="54">Development</text>
-                                <path className="st0" d="M382.44 116.43l47.65-85.23 8.36-14.96M369.83 139l-.01.01L362 153"/>
-                                <path d="M438.76 15.76l-56.42 100.91c-12.52-10.83-20.45-26.82-20.45-44.67 0-32.58 26.42-59 59-59 6.23 0 12.24.97 17.87 2.76z" fill="#0b72b9"/>
-                                <path d="M479.89 72c0 32.58-26.42 59-59 59-14.73 0-28.21-5.4-38.55-14.33l56.42-100.91c23.85 7.57 41.13 29.89 41.13 56.24z"/>
+                                <path className="st0" d="M382.44 116.43l47.65-85.23 8.36-14.96M369.83 139l-.01.01L362 153" />
+                                <path d="M438.76 15.76l-56.42 100.91c-12.52-10.83-20.45-26.82-20.45-44.67 0-32.58 26.42-59 59-59 6.23 0 12.24.97 17.87 2.76z" fill="#0b72b9" />
+                                <path d="M479.89 72c0 32.58-26.42 59-59 59-14.73 0-28.21-5.4-38.55-14.33l56.42-100.91c23.85 7.57 41.13 29.89 41.13 56.24z" />
                                 <g id="Group_186" transform="translate(30.153 11.413)">
                                     <g id="Group_185">
                                         <g id="Words">
-                                            <path id="Path_59" className="st1" d="M405.05 14.4l-.09 80.38-7.67-.01.06-52.25-29.4 52.21-7.94-.01 45.04-80.32z"/>
+                                            <path id="Path_59" className="st1" d="M405.05 14.4l-.09 80.38-7.67-.01.06-52.25-29.4 52.21-7.94-.01 45.04-80.32z" />
                                         </g>
                                     </g>
                                 </g>
-                                <path className="st0" d="M457-17l-8.93 16-9.62 17.24-8.36 14.96L369.93 139l-.01.01L361 155"/>
+                                <path className="st0" d="M457-17l-8.93 16-9.62 17.24-8.36 14.96L369.93 139l-.01.01L361 155" />
                             </svg>
                         </Button>
                         <Hidden mdDown>
