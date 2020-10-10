@@ -6,6 +6,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import Header from '../src/UI/Header';
 import Footer from '../src/UI/Footer';
 import Theme from "../src/UI/Theme";
+import Fonts from '../src/UI/Fonts';
 
 ReactGA.initialize("UA-177632291-1");
 
@@ -17,6 +18,7 @@ export default function MyApp(props) {
   const { Component, pageProps } = props;
 
   React.useEffect(() => {
+    Fonts();
     // Remove the server-side injected CSS.
     console.log('theme', Theme);
     const jssStyles = document.querySelector('#jss-server-side');
