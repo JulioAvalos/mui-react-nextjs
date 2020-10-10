@@ -10,6 +10,8 @@ import technologyAnimation from "../src/animations/technologyAnimation/data.json
 
 import CallToAction from "../src/UI/CallToAction";
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 const useStyles = makeStyles(theme => ({
     rowContainer: {
         paddingLeft: '5em',
@@ -215,7 +217,7 @@ const Revolution = props => {
             </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-            <img
+            <LazyLoadImage
                 src="/assets/consultationIcon.svg"
                 alt="handshake"
                 width="100%"
@@ -259,7 +261,7 @@ const Revolution = props => {
                 style={{ marginTop: '5em' }}
             >
                 <Grid item lg>
-                    <img
+                    <LazyLoadImage
                         src="/assets/vision.svg"
                         alt="montain through binoculars"
                         style={{
@@ -431,7 +433,8 @@ const Revolution = props => {
                         </Grid>
                     </Grid>
                     <Grid item lg style={{ alignSelf: 'center' }}>
-                        <img
+                        <LazyLoadImage
+                            threshold={400}
                             src={section.icon}
                             alt={section.iconAlt}
                             width="100%"

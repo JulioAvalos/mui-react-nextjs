@@ -12,9 +12,10 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
 import CallToAction from '../src/UI/CallToAction';
-import ButtonArrow from '../src/UI/ButtonArrow'
+import ButtonArrow from '../src/UI/ButtonArrow';
 
 import animationData from '../src/animations/landinganimation/data';
+import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
 
 const useStyles = makeStyles(theme => ({
     animation: {
@@ -116,6 +117,8 @@ const useStyles = makeStyles(theme => ({
         }
     },
     infoBackground: {
+        position: 'absolute',
+        zIndex: -1,
         backgroundImage: `url("/assets/infoBackground.svg")`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
@@ -245,7 +248,11 @@ const LandingPage = (props) => {
                         </Button>
                     </Grid>
                     <Grid item>
-                        <img className={classes.icon} alt="custom software icon" src="/assets/customSoftware.svg" />
+                        <LazyLoadImage 
+                            className={classes.icon} 
+                            alt="custom software icon" 
+                            src="/assets/customSoftware.svg" 
+                        />
                     </Grid>
                 </Grid>
                 {" "}
@@ -283,7 +290,7 @@ const LandingPage = (props) => {
                         </Button>
                     </Grid>
                     <Grid item style={{ marginRight: matchesSM ? 0 : '5em' }}>
-                        <img
+                        <LazyLoadImage
                             className={classes.icon}
                             alt="mobile apps icon"
                             src="/assets/mobileIcon.svg"
@@ -326,7 +333,7 @@ const LandingPage = (props) => {
                         </Button>
                     </Grid>
                     <Grid item>
-                        <img
+                        <LazyLoadImage
                             className={classes.icon}
                             alt="website icon"
                             src="/assets/websiteIcon.svg"
@@ -371,17 +378,20 @@ const LandingPage = (props) => {
                                 </Grid>
                             </CardContent>
                         </Card>
-                        <div className={classes.revolutionBackground} />
+                        <LazyLoadComponent threshold={300}>
+                            <div 
+                                className={classes.revolutionBackground} 
+                            />
+                        </LazyLoadComponent>
                     </Grid>
                 </Grid>
                 {/*-----Information Block-----*/}
                 <Grid item>
                     <Grid
                         container
-                        style={{ height: '80em' }}
+                        style={{ height: '77em' }}
                         alignItems="center"
                         direction="row"
-                        className={classes.infoBackground}
                     >
                         <Grid
                             item
@@ -448,12 +458,17 @@ const LandingPage = (props) => {
                                 </Grid>
                             </Grid>
                         </Grid>
+                        <LazyLoadComponent threshold={700}>
+                            <div className={classes.infoBackground} />
+                        </LazyLoadComponent>
                     </Grid>
                 </Grid>
             </Grid>
             {/* Call to action section */}
             <Grid item>
-                <CallToAction setValue={props.setValue}/>
+                <LazyLoadComponent threshold={700}>
+                    <CallToAction setValue={props.setValue}/>
+                </LazyLoadComponent>
             </Grid>
         </Grid>
     );
